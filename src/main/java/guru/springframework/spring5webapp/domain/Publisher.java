@@ -19,6 +19,11 @@ public class Publisher {
     private String zip;
 
 
+    @OneToMany
+    @JoinColumn(name = "publicher_id")
+    private Set<Book> books = new HashSet<>();
+
+
     // JPA requires noArgs constructor
     public Publisher() {
     }
@@ -50,6 +55,14 @@ public class Publisher {
                 ", state='" + state + '\'' +
                 ", zip='" + zip + '\'' +
                 '}';
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public Long getId() {
